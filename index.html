@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda de Planilha de Códigos de Tributação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 90%;
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        p {
+            font-size: 1.2em;
+            color: #cccccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .price {
+            font-size: 1.5em;
+            color: #888888;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+        .promo-price {
+            font-size: 2em;
+            color: #e53935;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .timer {
+            font-size: 1.2em;
+            color: #e67e22;
+            margin-bottom: 30px;
+        }
+        .btn-buy {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background: #28a745;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .btn-buy:hover {
+            background: #218838;
+        }
+        .faq {
+            margin-top: 50px;
+        }
+        .faq h2 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .faq ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .faq li {
+            margin-bottom: 20px;
+        }
+        .faq .question {
+            background-color: #28a745;
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s ease;
+        }
+        .faq .question:hover {
+            background-color: #218838;
+        }
+        .faq .answer {
+            display: none;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .faq .answer.show {
+            display: block;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            p, .price, .timer {
+                font-size: 1em;
+            }
+            .promo-price {
+                font-size: 1.5em;
+            }
+            .btn-buy {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Planilha de Códigos de Tributação para MEI</h1>
+        <p>Adquira nossa planilha completa com todos os códigos de tributação necessários para a emissão de Nota Fiscal Eletrônica de Serviços para MEI. Facilite sua vida e evite erros fiscais.</p>
+        <p class="price">De: R$ 127,90</p>
+        <p class="promo-price">Por: R$ 4,99</p>
+        <div class="timer" id="timer">Promoção expira em: 24:00:00</div>
+        <a href="https://wa.me/5551999999999" class="btn-buy">COMPRAR AGORA</a>
+        
+        <!-- Aba de Perguntas e Respostas -->
+    </div>
+    <script>
+        function startTimer(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = "Promoção expira em: " + hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var twoHours = 60 * 60 * 24,
+                display = document.querySelector('#timer');
+            startTimer(twoHours, display);
+        };
+        
+        // Script para mostrar e ocultar as respostas quando as perguntas são clicadas
+        const questions = document.querySelectorAll('.question');
+
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('show');
+    });
+});
+</script>
+</body>
+</html>
